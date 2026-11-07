@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priya & Rupsa | Virtual Hug 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Dancing+Script:wght@600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#ffe1ec,#f7ddff,#ffd6e7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.background-hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.72);
+    border: 1px solid white;
+    box-shadow: 0 20px 60px #c65c9230;
+    backdrop-filter: blur(15px);
+}
+
+.top-heart {
+    font-size: 35px;
+    animation: pulse 1.5s infinite;
+}
+
+h1 {
+    color: #cf4385;
+    font-size: 28px;
+    margin: 8px 0;
+}
+
+.subtitle {
+    color: #9e6584;
+    font-size: 13px;
+}
+
+.badge {
+    display: inline-block;
+    background: #ffe3ef;
+    color: #ce4384;
+    border-radius: 30px;
+    padding: 7px 18px;
+    font-size: 11px;
+    margin-top: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.scene {
+    position: relative;
+    height: 260px;
+    margin: 15px auto 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.girl {
+    position: absolute;
+    bottom: 25px;
+    font-size: 95px;
+    transition: all 1.4s cubic-bezier(.2,.8,.2,1);
+    z-index: 3;
+    filter: drop-shadow(0 8px 5px #d77da044);
+}
+
+#priya {
+    left: 4%;
+}
+
+#rupsa {
+    right: 4%;
+    transform: scaleX(-1);
+}
+
+.girl-label {
+    position: absolute;
+    bottom: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #bc4580;
+}
+
+#label1 { left: 12%; }
+#label2 { right: 12%; }
+
+.center-heart {
+    position: absolute;
+    top: 15px;
+    font-size: 38px;
+    opacity: 0;
+    transform: scale(.2);
+    transition: .6s;
+    z-index: 4;
+}
+
+.scene.hugging #priya {
+    left: 31%;
+    transform: scale(1.12) rotate(-9deg);
+}
+
+.scene.hugging #rupsa {
+    right: 31%;
+    transform: scaleX(-1.12) scale(1.12) rotate(-9deg);
+}
+
+.scene.hugging .center-heart {
+    opacity: 1;
+    transform: scale(1);
+    animation: heartbeat .7s infinite alternate;
+}
+
+.scene.hugging .girl {
+    animation: happy 1s ease-in-out infinite alternate;
+}
+
+@keyframes happy {
+    from { margin-bottom: 0; }
+    to { margin-bottom: 8px; }
+}
+
+@keyframes heartbeat {
+    to { transform: scale(1.35); }
+}
+
+.message-box {
+    background: #fff0f6;
+    border-radius: 20px;
+    padding: 18px 10px;
+    margin: 10px 0 20px;
+    border: 1px dashed #ed9fc2;
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+#message {
+    color: #c43e7d;
+    font-family: 'Dancing Script', cursive;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+#submessage {
+    font-size: 11px;
+    color: #a66c88;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    border: none;
+    padding: 15px;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
+
+button:active {
+    transform: scale(.95);
+}
+
+.hug-btn {
+    background: linear-gradient(100deg,#ff70a6,#d94a93);
+    color: white;
+    box-shadow: 0 8px 20px #e86ba455;
+}
+
+.reset-btn {
+    background: white;
+    color: #d34a8c;
+    border: 1px solid #f3bad3;
+}
+
+.keyboard {
+    margin-top: 20px;
+    padding: 13px 8px;
+    border-radius: 16px;
+    background: #fff5fa;
+}
+
+.keyboard-title {
+    color: #b74a7c;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.keys {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.key {
+    background: white;
+    color: #c34481;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #f0b5d0;
+    box-shadow: 0 3px 0 #e9b1cb;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.footer {
+    margin-top: 20px;
+    color: #b87b9a;
+    font-size: 10px;
+}
+
+.floating {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    animation: floatUp linear forwards;
+    z-index: 5;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.flash {
+    animation: flash .6s ease;
+}
+
+@keyframes flash {
+    50% { box-shadow: 0 0 40px #ff78b5; }
+}
+
+@keyframes pulse {
+    50% { transform: scale(1.2); }
+}
+
+@media(max-width:380px) {
+    h1 { font-size: 24px; }
+    .girl { font-size: 75px; }
+    .scene { height: 235px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background-hearts" id="background"></div>
+
+<main class="container" id="card">
+
+    <div class="top-heart">💗</div>
+
+    <h1>Priya & Rupsa</h1>
+
+    <p class="subtitle">
+        A little virtual hug, filled with lots of love.
+    </p>
+
+    <div class="badge">SPECIAL FRIENDSHIP MOMENT ✨</div>
+
+    <section class="scene" id="scene">
+
+        <div class="center-heart">💞</div>
+
+        <div class="girl" id="priya">👩🏻‍🦰</div>
+        <div class="girl" id="rupsa">👩🏻‍🦱</div>
+
+        <div class="girl-label" id="label1">Priya</div>
+        <div class="girl-label" id="label2">Rupsa</div>
+
+    </section>
+
+    <div class="message-box">
+        <div id="message">
+            Waiting for a warm hug... 🥺
+        </div>
+
+        <div id="submessage">
+            Two hearts, one beautiful friendship.
+        </div>
+    </div>
+
+    <div class="buttons">
+
+        <button class="hug-btn" onclick="giveHug()">
+            🫂 SEND A BIG HUG
+        </button>
+
+        <button class="reset-btn" onclick="resetHug()">
+            ↻ Replay Moment
+        </button>
+
+    </div>
+
+    <div class="keyboard">
+
+        <div class="keyboard-title">
+            ⌨️ KEYBOARD CONTROLS
+        </div>
+
+        <div class="keys">
+            <span class="key">H = HUG</span>
+            <span class="key">SPACE = HUG</span>
+            <span class="key">R = RESET</span>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Made with ❤️ for Priya & Rupsa
+        <br><br>
+        A hug can make someone's day beautiful. 🌷
+    </div>
+
+</main>
+
+<script>
+
+const scene = document.getElementById("scene");
+const message = document.getElementById("message");
+const submessage = document.getElementById("submessage");
+const card = document.getElementById("card");
+
+let isHugging = false;
+
+function giveHug() {
+
+    if(isHugging) return;
+
+    isHugging = true;
+
+    scene.classList.add("hugging");
+
+    message.innerHTML = "A Big Warm Hug! 🫂💗";
+
+    submessage.innerHTML =
+    "Priya and Rupsa are sharing a beautiful moment!";
+
+    card.classList.remove("flash");
+
+    void card.offsetWidth;
+
+    card.classList.add("flash");
+
+    createHearts(35);
+}
+
+function resetHug() {
+
+    isHugging = false;
+
+    scene.classList.remove("hugging");
+
+    message.innerHTML = "Waiting for a warm hug... 🥺";
+
+    submessage.innerHTML =
+    "Two hearts, one beautiful friendship.";
+
+}
+
+function createHearts(number) {
+
+    const emojis = [
+        "💗","💕","💖","❤️","🫶","🌸","✨","💞"
+    ];
+
+    for(let i = 0; i < number; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "floating";
+
+        heart.innerHTML =
+        emojis[Math.floor(Math.random()*emojis.length)];
+
+        heart.style.left = Math.random()*100 + "vw";
+
+        heart.style.fontSize =
+        (18 + Math.random()*25) + "px";
+
+        heart.style.animationDuration =
+        (3 + Math.random()*3) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6500);
+    }
+}
+
+// KEYBOARD CONTROL
+
+document.addEventListener("keydown", function(event) {
+
+    if(event.repeat) return;
+
+    if(
+        event.key.toLowerCase() === "h" ||
+        event.code === "Space"
+    ) {
+        event.preventDefault();
+        giveHug();
+    }
+
+    if(event.key.toLowerCase() === "r") {
+        resetHug();
+    }
+
+});
+
+// Small floating background decorations
+
+function backgroundHearts() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "floating";
+
+    heart.innerHTML = ["💕","🌸","💗","✨"][
+        Math.floor(Math.random()*4)
+    ];
+
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = "18px";
+    heart.style.opacity = ".45";
+    heart.style.animationDuration = "9s";
+
+    document.getElementById("background")
+    .appendChild(heart);
+
+    setTimeout(() => heart.remove(), 9000);
+}
+
+setInterval(backgroundHearts, 1200);
+
+</script>
+
+</body>
+</html>
